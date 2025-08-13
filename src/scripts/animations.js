@@ -18,9 +18,9 @@ document.addEventListener('astro:page-load', () => {
 	}, 0);
 
 	tl.fromTo(".anim-typewriter", {
-		"border-right-color": "rgba(79, 70, 229, 1)"
+		"border-right-color": "rgba(251, 193, 106, 1)"
 	}, {
-		"border-right-color": "rgba(79, 70, 229, 0)",
+		"border-right-color": "rgba(251, 193, 106, 0)",
 		repeat: -1,
 		ease: "steps(7)",
 		duration: 1
