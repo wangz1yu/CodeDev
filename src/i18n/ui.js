@@ -51,7 +51,10 @@ export const ui = {
 		"contact.form.email": "Email",
 		"contact.form.subject": "Subject",
 		"contact.form.message": "Message",
-		"contact.form.send": "Let's Talk"
+		"contact.form.send": "Let's Talk",
+		"contact.form.sending": "Sending...",
+		"contact.form.success": "Thank you for your message! We will get back to you soon.",
+		"contact.form.error": "Sending failed, please try again later or contact us directly."
 	},
 	de: {
 		'nav.home': 'Home',
@@ -97,7 +100,10 @@ export const ui = {
 		"contact.form.email": "Email",
 		"contact.form.subject": "Thema",
 		"contact.form.message": "Nachricht",
-		"contact.form.send": "Lass uns reden"
+		"contact.form.send": "Lass uns reden",
+		"contact.form.sending": "Wird gesendet...",
+		"contact.form.success": "Vielen Dank für Ihre Nachricht! Wir werden uns bald bei Ihnen melden.",
+		"contact.form.error": "Senden fehlgeschlagen, bitte versuchen Sie es später erneut oder kontaktieren Sie uns direkt."
 	},
 	zh: {
 		'nav.home': '首页',
@@ -142,7 +148,10 @@ export const ui = {
 		"contact.form.email": "邮箱",
 		"contact.form.subject": "主题",
 		"contact.form.message": "信息",
-		"contact.form.send": "开始对话"
+		"contact.form.send": "开始对话",
+		"contact.form.sending": "发送中...",
+		"contact.form.success": "感谢您的留言！我们会尽快回复您。",
+		"contact.form.error": "发送失败，请稍后重试或直接联系我们。"
 	},
 };
 

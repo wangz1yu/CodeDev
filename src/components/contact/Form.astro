@@ -5,20 +5,35 @@ const t = useTranslations(lang);
 ---
 
 <section class='flex gap-10 justify-center appear rounded-xl'>
-	<form class='flex flex-col gap-4'>
+	<form 
+		class='flex flex-col gap-4' 
+		name='contact' 
+		method='POST' 
+		action='https://formspree.io/f/xnnzwreg'
+		id='contact-form'
+		data-success-msg={t('contact.form.success')}
+		data-error-msg={t('contact.form.error')}
+	>
+		<!-- Formspree 配置字段 -->
+		<input type='hidden' name='_subject' value='新的联系表单提交 - CodeDev' />
+		<input type='hidden' name='_language' value={lang} />
+		
+		<!-- 状态消息 -->
+		<div id='form-messages' class='hidden'></div>
+
 		<div class='flex gap-4'>
 			<input
 				type='text'
 				name='name'
 				required
 				placeholder={t('contact.form.name')}
-				class='px-4 py-2 rounded-xl outline outline-1 w-full'
+				class='px-4 py-2 rounded-xl outline outline-1 w-full focus:outline-2 focus:outline-indigo-600'
 			/>
 			<input
 				type='email'
 				name='email'
 				required
-				class='px-4 py-2 rounded-xl outline outline-1 w-full'
+				class='px-4 py-2 rounded-xl outline outline-1 w-full focus:outline-2 focus:outline-indigo-600'
 				placeholder={t('contact.form.email')}
 			/>
 		</div>
@@ -27,19 +42,120 @@ const t = useTranslations(lang);
 			name='subject'
 			required
 			placeholder={t('contact.form.subject')}
-			class='px-4 py-2 rounded-xl outline outline-1'
+			class='px-4 py-2 rounded-xl outline outline-1 focus:outline-2 focus:outline-indigo-600'
 		/>
 		<textarea
 			name='message'
 			required
 			placeholder={t('contact.form.message')}
-			required
-			class='px-4 py-2 rounded-xl outline outline-1 resize-none min-h-40'
+			class='px-4 py-2 rounded-xl outline outline-1 resize-none min-h-40 focus:outline-2 focus:outline-indigo-600'
 		></textarea>
 
+		<!-- 联系偏好（可选） -->
+		<div class='flex flex-col gap-2'>
+			<label class='text-sm font-medium'>联系偏好（可选）:</label>
+			<div class='flex gap-4'>
+				<label class='flex items-center gap-2'>
+					<input type='radio' name='contact_preference' value='email' checked />
+					<span>邮件</span>
+				</label>
+				<label class='flex items-center gap-2'>
+					<input type='radio' name='contact_preference' value='phone' />
+					<span>电话</span>
+				</label>
+				<label class='flex items-center gap-2'>
+					<input type='radio' name='contact_preference' value='wechat' />
+					<span>微信</span>
+				</label>
+			</div>
+		</div>
+
 		<button
-			class='px-3 py-2 rounded-full transition-colors hover:bg-white font-medium border border-indigo-600 outline-1 bg-indigo-600 text-white hover:text-slate-900'>
-			{t('contact.form.send')}
+			type='submit'
+			id='submit-btn'
+			class='px-3 py-2 rounded-full transition-colors hover:bg-white font-medium border border-indigo-600 outline-1 bg-indigo-600 text-white hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed'>
+			<span id='btn-text'>{t('contact.form.send')}</span>
+			<span id='btn-loading' class='hidden'>{t('contact.form.sending')}</span>
 		</button>
 	</form>
 </section>
+
+<script>
+	// 临时禁用 JavaScript 提交，让 Formspree 先初始化
+	// 第一次成功提交后，可以重新启用增强功能
+	
+	/*
+	document.addEventListener('astro:page-load', () => {
+		const form = document.getElementById('contact-form') as HTMLFormElement;
+		const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
+		const btnText = document.getElementById('btn-text');
+		const btnLoading = document.getElementById('btn-loading');
+		const messages = document.getElementById('form-messages');
+
+		if (form && submitBtn) {
+			form.addEventListener('submit', async (e) => {
+				e.preventDefault();
+				
+				// 显示加载状态
+				submitBtn.disabled = true;
+				if (btnText) btnText.classList.add('hidden');
+				if (btnLoading) btnLoading.classList.remove('hidden');
+				if (messages) messages.classList.add('hidden');
+
+				try {
+					const formData = new FormData(form);
+					
+					// 获取表单的 action URL
+					const actionUrl = form.action;
+					
+					const response = await fetch(actionUrl, {
+						method: 'POST',
+						body: formData,
+						headers: {
+							'Accept': 'application/json'
+						}
+					});
+
+					if (response.ok) {
+						// 成功
+						if (messages) {
+							const successMsg = form.dataset.successMsg || 'Thank you for your message!';
+							messages.innerHTML = `<div class="p-4 bg-green-100 text-green-700 rounded-xl">
+								<div class="font-semibold mb-1">✅ ${successMsg}</div>
+								<div class="text-sm">我们已收到您的消息，会在24小时内回复您。</div>
+							</div>`;
+							messages.classList.remove('hidden');
+						}
+						form.reset();
+					} else {
+						const data = await response.json();
+						if (data.errors) {
+							throw new Error(data.errors.map((err: any) => err.message).join(', '));
+						} else {
+							throw new Error('提交失败');
+						}
+					}
+				} catch (error) {
+					// 错误
+					if (messages) {
+						const errorMsg = form.dataset.errorMsg || 'Sending failed, please try again.';
+						messages.innerHTML = `<div class="p-4 bg-red-100 text-red-700 rounded-xl">
+							<div class="font-semibold mb-1">❌ ${errorMsg}</div>
+							<div class="text-sm">
+								错误详情: ${error instanceof Error ? error.message : '未知错误'}<br>
+								您也可以直接发邮件联系我们：<a href="mailto:wangziyu@dianxingg.com.cn" class="underline">contact@codedev.com</a>
+							</div>
+						</div>`;
+						messages.classList.remove('hidden');
+					}
+				} finally {
+					// 恢复按钮状态
+					submitBtn.disabled = false;
+					if (btnText) btnText.classList.remove('hidden');
+					if (btnLoading) btnLoading.classList.add('hidden');
+				}
+			});
+		}
+	});
+	*/
+</script>
