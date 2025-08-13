@@ -27,13 +27,13 @@ const t = useTranslations(lang);
 				name='name'
 				required
 				placeholder={t('contact.form.name')}
-				class='px-4 py-2 rounded-xl outline outline-1 w-full focus:outline-2 focus:outline-indigo-600'
+				class='px-4 py-2 rounded-xl outline outline-1 w-full focus:outline-2 focus:outline-[#fbc16a]'
 			/>
 			<input
 				type='email'
 				name='email'
 				required
-				class='px-4 py-2 rounded-xl outline outline-1 w-full focus:outline-2 focus:outline-indigo-600'
+				class='px-4 py-2 rounded-xl outline outline-1 w-full focus:outline-2 focus:outline-[#fbc16a]'
 				placeholder={t('contact.form.email')}
 			/>
 		</div>
@@ -42,13 +42,13 @@ const t = useTranslations(lang);
 			name='subject'
 			required
 			placeholder={t('contact.form.subject')}
-			class='px-4 py-2 rounded-xl outline outline-1 focus:outline-2 focus:outline-indigo-600'
+			class='px-4 py-2 rounded-xl outline outline-1 focus:outline-2 focus:outline-[#fbc16a]'
 		/>
 		<textarea
 			name='message'
 			required
 			placeholder={t('contact.form.message')}
-			class='px-4 py-2 rounded-xl outline outline-1 resize-none min-h-40 focus:outline-2 focus:outline-indigo-600'
+			class='px-4 py-2 rounded-xl outline outline-1 resize-none min-h-40 focus:outline-2 focus:outline-[#fbc16a]'
 		></textarea>
 
 		<!-- 联系偏好（可选） -->
@@ -73,7 +73,7 @@ const t = useTranslations(lang);
 		<button
 			type='submit'
 			id='submit-btn'
-			class='px-3 py-2 rounded-full transition-colors hover:bg-white font-medium border border-indigo-600 outline-1 bg-indigo-600 text-white hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed'>
+			class='px-3 py-2 rounded-full transition-colors hover:bg-white font-medium border border-[#fbc16a] outline-1 bg-[#fbc16a] text-white hover:text-slate-900 disabled:opacity-50 disabled:cursor-not-allowed'>
 			<span id='btn-text'>{t('contact.form.send')}</span>
 			<span id='btn-loading' class='hidden'>{t('contact.form.sending')}</span>
 		</button>
@@ -81,10 +81,6 @@ const t = useTranslations(lang);
 </section>
 
 <script>
-	// 临时禁用 JavaScript 提交，让 Formspree 先初始化
-	// 第一次成功提交后，可以重新启用增强功能
-	
-	/*
 	document.addEventListener('astro:page-load', () => {
 		const form = document.getElementById('contact-form') as HTMLFormElement;
 		const submitBtn = document.getElementById('submit-btn') as HTMLButtonElement;
@@ -128,22 +124,23 @@ const t = useTranslations(lang);
 						}
 						form.reset();
 					} else {
+						// 处理错误响应
 						const data = await response.json();
 						if (data.errors) {
 							throw new Error(data.errors.map((err: any) => err.message).join(', '));
 						} else {
-							throw new Error('提交失败');
+							throw new Error('提交失败，请稍后重试');
 						}
 					}
 				} catch (error) {
-					// 错误
+					// 错误处理
 					if (messages) {
 						const errorMsg = form.dataset.errorMsg || 'Sending failed, please try again.';
 						messages.innerHTML = `<div class="p-4 bg-red-100 text-red-700 rounded-xl">
 							<div class="font-semibold mb-1">❌ ${errorMsg}</div>
 							<div class="text-sm">
 								错误详情: ${error instanceof Error ? error.message : '未知错误'}<br>
-								您也可以直接发邮件联系我们：<a href="mailto:wangziyu@dianxingg.com.cn" class="underline">contact@codedev.com</a>
+								您也可以直接发邮件联系我们：<a href="mailto:wangziyu@dianxingg.com.cn" class="underline">wangziyu@dianxingg.com.cn</a>
 							</div>
 						</div>`;
 						messages.classList.remove('hidden');
@@ -157,5 +154,4 @@ const t = useTranslations(lang);
 			});
 		}
 	});
-	*/
 </script>
