@@ -1,6 +1,7 @@
 export const languages = {
 	en: 'English',
 	de: 'Deutsch',
+	zh: '简体中文',
 };
 
 export const defaultLang = 'en';
@@ -97,6 +98,51 @@ export const ui = {
 		"contact.form.subject": "Thema",
 		"contact.form.message": "Nachricht",
 		"contact.form.send": "Lass uns reden"
+	},
+	zh: {
+		'nav.home': '首页',
+		'nav.about': '关于我们',
+		"nav.projects": "项目",
+		"nav.contact": "联系我们",
+
+		"home.description": "与我们合作进行定制的网页和软件开发，满足您的需求——无论是网站还是移动/网页应用程序，我们都能为您提供服务。",
+		"home.meeting": "预约会议",
+		"errorpage.title": "404 页面未找到",
+		"errorpage.link": "返回首页",
+
+		"process": "流程",
+		"process.description": "CodeDev 流程方法",
+
+		"techs.title": "我们使用的技术",
+
+		"services": "服务",
+		"services.description": "我们帮助您将愿景变为现实。",
+
+		"callaction.title": "有项目想法吗？",
+		"callaction.link": "让我们开始工作",
+
+		"projects": "项目",
+		"projects.description": "查看我们最佳项目的精选",
+		"projects.viewall": "查看所有项目",
+
+		"about.title": "我们是谁？",
+		"about.description": "我们通过理解客户在广阔数字环境中脱颖而出的需求，并创建最适合您公司的定制解决方案，帮助客户取得成功。我们总部位于多伦多，为全世界创建定制数字解决方案。",
+		"about.story.title": "我们的故事",
+		"about.story.description": "CodeDev 由一支有远见的企业家团队创立，他们因大学的根基和对数字环境的深入理解而团结在一起。作为一家不断发展的网页和软件开发机构，我们致力于提供卓越的成果。我们的历程让我们能够与众多受人尊敬的企业主合作，我们期待继续扩大影响力并在行业中培养新的关系。",
+		"about.perks.title": "三大优势",
+		"about.perks.description": "与 CodeDev 合作的优势",
+
+		"contact.title": "联系我们",
+		"contact.subtitle": "让我们将您的想法变为现实！",
+		"contact.description": "如果您想与我们合作或只是想联系我们，我们很乐意听到您的声音！",
+		"contact.cale.subtitle": "安排通话",
+		"contact.cale.description": "在我们 15 分钟的发现通话中，我们会与您坐下来了解您的品牌在哪些领域可以从使用我们的服务中受益。",
+		"contact.form.title": "联系我们",
+		"contact.form.name": "姓名",
+		"contact.form.email": "邮箱",
+		"contact.form.subject": "主题",
+		"contact.form.message": "信息",
+		"contact.form.send": "开始对话"
 	},
 };
 

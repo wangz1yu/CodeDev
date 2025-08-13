@@ -81,6 +81,43 @@ export const projects = {
 			gallery: true
 		},
 	],
+	zh: [
+		{
+			tag: '网站开发与品牌重塑',
+			name: 'Trattoria Enoteca Luca',
+			description:
+				'我们喜欢欢声笑语，与合作伙伴建立牢固的关系。',
+			img: '/projects/trattoria.webp',
+			link: 'https://github.com/',
+		},
+		{
+			tag: '电子商务与管理',
+			name: 'Red Feather Trading Post',
+			description:
+				'我们快速响应消息，在您最需要的时候为您提供支持。',
+			img: '/projects/commerce.webp',
+			link: 'https://github.com/',
+			gallery: true
+		},
+		{
+			tag: '网站开发',
+			name: 'Slate Electric',
+			description:
+				'为您节省资金，让您重新投资业务，促进团队聚餐和咖啡聊天。',
+			img: '/projects/electric.webp',
+			link: 'https://github.com/',
+			gallery: true
+		},
+		{
+			tag: '网站改版',
+			name: 'SkyShot Management',
+			description:
+				'我们喜欢欢声笑语，与合作伙伴建立牢固的关系。',
+			img: '/projects/skyshot.webp',
+			link: 'https://github.com/',
+			gallery: true
+		},
+	],
 };
 
 export const socials = [
@@ -160,6 +197,35 @@ export const services = {
 			icon: maintenanceIcon.src,
 		},
 	],
+	zh: [
+		{
+			title: '网站开发',
+			items: [
+				'网站创建',
+				'UI/UX 设计与线框图',
+				'网站维护',
+			],
+			icon: websiteIcon.src,
+		},
+		{
+			title: '软件开发',
+			items: [
+				'Web 应用开发',
+				'移动应用开发',
+				'桌面应用开发',
+			],
+			icon: softwareIcon.src,
+		},
+		{
+			title: '维护服务',
+			items: [
+				'托管与管理',
+				'优化与最佳实践',
+				'迭代与频繁更新',
+			],
+			icon: maintenanceIcon.src,
+		},
+	],
 };
 
 export const perks = {
@@ -195,6 +261,23 @@ export const perks = {
 			title: 'Schnell und effizient',
 			description:
 				'Wir reagieren schnell auf Nachrichten und sind da, wenn Sie uns am meisten brauchen.',
+		},
+	],
+	zh: [
+		{
+			title: '成本效益',
+			description:
+				'为您节省资金，让您重新投资业务，促进团队聚餐和咖啡聊天 :)',
+		},
+		{
+			title: '人文关怀',
+			description:
+				'我们喜欢欢声笑语，与合作伙伴建立牢固的关系。',
+		},
+		{
+			title: '快速高效',
+			description:
+				'我们快速响应消息，在您最需要的时候为您提供支持。',
 		},
 	],
 };
@@ -234,6 +317,24 @@ export const process = {
 		{
 			title: 'Lieferung',
 			description: 'Lösung bereitgestellt und unterstützt.',
+		},
+	],
+	zh: [
+		{
+			title: '研究',
+			description: '了解您的需求，制定计划。',
+		},
+		{
+			title: '概念',
+			description: '将您的梦想变为现实。',
+		},
+		{
+			title: '开发',
+			description: '解决方案开发。',
+		},
+		{
+			title: '交付',
+			description: '解决方案部署与支持。',
 		},
 	],
 };

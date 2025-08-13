@@ -7,7 +7,7 @@ document.addEventListener('astro:page-load', () => {
 	const container = document.getElementById('logo3d');
 
 	const aspectRatio = container.clientWidth / container.clientHeight;
-	const frustumSize = 10;
+	const frustumSize = 40;
 
 	const camera = new THREE.OrthographicCamera(
 		(frustumSize * aspectRatio) / -2,
@@ -18,7 +18,7 @@ document.addEventListener('astro:page-load', () => {
 		1000
 	);
 
-	camera.position.set(0, 0, 7);
+	camera.position.set(0, 0, 50);
 	camera.lookAt(0, 0, 0);
 
 	window.addEventListener('resize', () => {
@@ -41,7 +41,7 @@ document.addEventListener('astro:page-load', () => {
 			logo = gltf.scene;
 
 			const metalMaterial = new THREE.MeshStandardMaterial({
-				color: 0x4f46e5,
+				color: 0xfbc16a,
 				metalness: 0.4,
 				roughness: 0.5,
 			});
@@ -52,7 +52,7 @@ document.addEventListener('astro:page-load', () => {
 				}
 			});
 
-			logo.scale.set(4, 4, 4);
+			logo.scale.set(2, 2, 2);
 			scene.add(logo);
 		},
 		(xhr) => {
